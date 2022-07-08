@@ -2,5 +2,5 @@
 echo %~dp0
 
 git add .
-git commit -m "connect to google sheets data"
+git commit -m "logro connect"
 git push

@@ -115,6 +115,7 @@ def regr():
 def run_query(query):
   rows = conn.execute(query, headers=1)
   rows = rows.fetchall()
+  return rows
 #! JALANDO LAS FILAS DE CADA HOJA.
 reportes = st.secrets["reportes"]
 rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
@@ -125,9 +126,9 @@ print(rowsresformularios)
 def becdep():
   global rowsreportes, rowsresformularios
   st.write(rowsresformularios)
-  # for row in rowsresformularios:
-  #   st.write(row)
-  #   st.write(f"{row.Nombre} has a ::")
+  for row in rowsresformularios:
+    st.write(row)
+    st.write(f"{row.Nombre} has a ::")
 
 def becedad():
   global colum, yaxe, df
