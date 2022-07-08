@@ -118,7 +118,7 @@ def run_query(query):
 #! JALANDO LAS FILAS DE CADA HOJA.
 reportes = st.secrets["reportes"]
 rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
-resformularios  = st.secrets["resformularios "]
+resformularios  = st.secrets["resformularios"]
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios }"')
 
 def becdep(query):
