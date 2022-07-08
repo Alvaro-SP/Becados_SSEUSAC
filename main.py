@@ -153,8 +153,8 @@ def main():
     "Total de Horas por cada Becado": bechoras
   }
 
+  st.sidebar.image('https://www.redfia.net.gt/wp-content/uploads/2019/09/LOGO-USAC-2012-1.png')
   demo_name = st.sidebar.selectbox("Algoritmos: ", page_names_to_funcs.keys())
-  st.sidebar.image('https://cdn.elperiodico.com.gt/wp-content/uploads/2022/05/02224014/PAG-06-F01-JA-1024x768.jpg')
   page_names_to_funcs[demo_name]()
   #? Área para seleccionar las operaciones que desea realizar según lo seleccionado anteriormente.
   #? Área donde se puedan parametrizar los distintos algoritmos .
