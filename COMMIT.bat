@@ -13,7 +13,7 @@ echo %~dp0
 git add .
 git commit -m "commit"
 git push
-git push https://Alvaro-SP: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@github.com/Alvaro-SP/Project2_OLC2VJ.git
+@REM git push https://Alvaro-SP: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@github.com/Alvaro-SP/Project2_OLC2VJ.git
 pause
 
 
