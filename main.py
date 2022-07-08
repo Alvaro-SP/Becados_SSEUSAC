@@ -20,6 +20,11 @@ import pandas as pd
 from sklearn import linear_model
 import streamlit.components.v1 as components
 from gsheetsdb import connect
+# Create a connection object.
+conn = connect()
+# Perform SQL query on the Google Sheet.
+# Uses st.cache to only rerun when the query changes or after 10 min.
+
 #redes neuronales
 # from data_prep import features,targets, features_test, targets_test
 df={}
@@ -105,8 +110,22 @@ def regr():
   else:
     pass
 
-def becdep():
-  global colum, yaxe, df
+
+@st.cache(ttl=600)
+def run_query(query):
+  rows = conn.execute(query, headers=1)
+  rows = rows.fetchall()
+#! JALANDO LAS FILAS DE CADA HOJA.
+reportes = st.secrets["reportes"]
+rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
+resformularios  = st.secrets["resformularios "]
+rowsresformularios = run_query(f'SELECT * FROM "{resformularios }"')
+
+def becdep(query):
+  global rowsreportes, rowsresformularios
+  for row in rowsresformularios:
+    st.write(row)
+    st.write(f"{row.Nombre} has a ::")
 
 def becedad():
   global colum, yaxe, df
