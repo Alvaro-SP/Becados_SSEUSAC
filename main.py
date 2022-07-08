@@ -508,17 +508,18 @@ def alg():
 #! █████████████████████ OPERACIONES █████████████████████
 
 def main():
+  st.image('https://becas.usac.edu.gt/wp-content/uploads/2019/05/cropped-bannerN.png')
   st.title('OLC2 202000194')
   st.write()
-  st.markdown(
-    """  <style>  
-    span[data-baseweb="tag"] 
-    {
-    background-color: blue !important;  
-    }  
-    </style>  """,
-  unsafe_allow_html=True,
-  )
+  # st.markdown(
+  #   """  <style>  
+  #   span[data-baseweb="tag"] 
+  #   {
+  #   background-color: blue !important;  
+  #   }  
+  #   </style>  """,
+  # unsafe_allow_html=True,
+  # )
   st.header('Bienvenida a mi , *Proyecto!* :sunglasses:', anchor=None)
 
   #? Carga de archivos. (Puede ser csv, xls, xlsx o json únicamente).
