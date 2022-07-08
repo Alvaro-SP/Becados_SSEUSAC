@@ -124,6 +124,7 @@ rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
 print(rowsresformularios)
 def becdep():
   global rowsreportes, rowsresformularios
+  st.write(rowsresformularios)
   # for row in rowsresformularios:
   #   st.write(row)
   #   st.write(f"{row.Nombre} has a ::")
