@@ -120,14 +120,11 @@ def run_query(query):
 reportes = st.secrets["reportes"]
 rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
 resformularios  = st.secrets["resformularios"]
-st.write(resformularios)
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
-print(rowsresformularios)
 def becdep():
   global rowsreportes, rowsresformularios
   st.write(rowsresformularios)
   for row in rowsresformularios:
-    st.write(row)
     st.write(f"{row.Nombre} has a ::")
 
 def becedad():
