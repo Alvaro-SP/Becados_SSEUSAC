@@ -119,6 +119,7 @@ def run_query(query):
 reportes = st.secrets["reportes"]
 rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
 resformularios  = st.secrets["resformularios"]
+st.write(resformularios)
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
 print(rowsresformularios)
 def becdep():
