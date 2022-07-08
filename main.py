@@ -19,6 +19,7 @@ import plotly.graph_objs  as go
 import pandas as pd
 from sklearn import linear_model
 import streamlit.components.v1 as components
+from gsheetsdb import connect
 #redes neuronales
 # from data_prep import features,targets, features_test, targets_test
 df={}
