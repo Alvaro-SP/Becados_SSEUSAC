@@ -121,7 +121,7 @@ rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
 resformularios  = st.secrets["resformularios"]
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios }"')
 
-def becdep(query):
+def becdep():
   global rowsreportes, rowsresformularios
   for row in rowsresformularios:
     st.write(row)
