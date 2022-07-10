@@ -122,7 +122,7 @@ rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
 
 resformularios  = st.secrets["resformularios"]
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
-st.write("TIPO DE DATO DE LAS LISTAS: ", rowsresformularios.type())
+st.write("TIPO DE DATO DE LAS LISTAS: ", type(rowsresformularios))
 #! ORGANNIZE DATA
 BecNames = [] #* NOMBRE DE LOS BECADOS
 for row in rowsresformularios:
