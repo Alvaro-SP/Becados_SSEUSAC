@@ -119,13 +119,17 @@ def run_query(query):
 #! JALANDO LAS FILAS DE CADA HOJA.
 reportes = st.secrets["reportes"]
 rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
+
 resformularios  = st.secrets["resformularios"]
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
+st.write("TIPO DE DATO DE LAS LISTAS: ", rowsresformularios.type())
+#! ORGANNIZE DATA
+BecNames = [] #* NOMBRE DE LOS BECADOS
+for row in rowsresformularios:
+    BecNames.append(row.Name)
 def becdep():
   global rowsreportes, rowsresformularios
   st.write(rowsresformularios)
-  for row in rowsresformularios:
-    st.write(f"{row.Nombre} has a ::")
 
 def becedad():
   global colum, yaxe, df
@@ -134,7 +138,12 @@ def becuni():
 def becpro():
   global colum, yaxe, df
 def bechoras():
-  global colum, yaxe, df
+  global rowsreportes, rowsresformularios
+  st.subheader("HORAS POR BECADOS")
+  options = st.multiselect(
+     'Selecciones uno o mas estudiantes: ',
+     ['Green', 'Yellow', 'Red', 'Blue'],
+     ['Yellow', 'Red'])
 def alg():
   global colum, yaxe, df,header
 
