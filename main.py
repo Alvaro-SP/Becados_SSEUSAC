@@ -156,29 +156,58 @@ for row in rowsresformularios:
 def becdep():
   global rowsreportes, rowsresformularios
   # st.write(rowsresformularios)
-  data = pd.DataFrame({
-      'awesome cities' : ['Chicago', 'Minneapolis', 'Louisville', 'Topeka'],
-      'lat' : [41.868171, 44.979840,  38.257972, 39.030575],
-      'lon' : [-87.667458, -93.272474, -85.765187,  -95.702548]
-  })
+  # *La división política de Guatemala consta de 22 Departamentos:
+    # 1  Alta Verapaz
+    # 2 Baja Verapaz
+    # 3 Chimaltenango
+    # 4 Chiquimula
+    # 5 El Progreso
+    # 6 Escuintla
+    # 7 Guatemala
+    # 8 Huehuetenango
+    # 9 Izabal
+    # 10 Jalapa
+    # 11 Jutiapa
+    # 12 Petén
+    # 13 Quetzaltenango
+    # 14 Quiché
+    # 15 Retalhuleu
+    # 16 Sacatepéquez
+    # 17 San marcos
+    # 18 Santa rosa
+    # 19 Sololá
+    # 20 Suchitepéquez
+    # 21 Totonicapán
+    # 22 Zacapa
 
-  # Adding code so we can have map default to the center of the data
-  midpoint = (np.average(data['lat']), np.average(data['lon']))
+  data = pd.DataFrame(
+    np.array([
+    [15.5, -90.333333],
+    [15.1009234, -90.3139743],
+    [14.6622, -90.8208],
+    [14.8, -89.54583],
+    [14.3579867773633, -89.84790854555509],
+    [14.3009, -90.78581],
+    [14.64072, -90.51327],
+    [15.31918, -91.47241],
+    [15.47225, -88.8407],
+    [14.63472, -89.98889],
+    [14.29167, -89.89583],
+    [16.8, -89.93333],
+    [14.83472, -91.51806],
+    [15.03085, -91.14871],
+    [14.53611, -91.67778],
+    [14.578414124412356, -90.79401954555287],
+    [14.96389 , -91.79444],
+    [14.15015235, -90.3508818353375],
+    [14.77222 , -91.18333],
+    [14.37766785, -91.3643907717613],
+    [14.91167 , -91.36111],
+    [14.97222, -89.53056]]
+    ),
+    columns=['lat', 'lon'])
 
-  st.map(
-    viewport={
-        'latitude': midpoint[0],
-        'longitude':  midpoint[1],
-        'zoom': 4
-    },
-    layers=[{
-      'type': 'ScatterplotLayer',
-      'data': data,
-      'radiusScale': 250,
-      'radiusMinPixels': 5,
-      'getFillColor': [248, 24, 148],
-    }]
-  )
+  st.map(data)
 def becedad():
   global colum, yaxe, df
 def becuni():
