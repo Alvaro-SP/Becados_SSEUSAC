@@ -145,9 +145,9 @@ BecEdad = [] #* EDAD DEL BECADO
 for row in rowsresformularios:
     BecEdad.append(row[8])
 
-BecNames = [] #* DEPTO DE REPLICA
+Becdeptoreplic = [] #* DEPTO DE REPLICA
 for row in rowsresformularios:
-    BecNames.append(row[9])
+    Becdeptoreplic.append(row[9])
 
 BecCapacitadas = [] #* PERSONAS CAPACITADAS
 for row in rowsresformularios:
@@ -203,7 +203,15 @@ def becdep():
   [14.91167 , -91.36111],
   [14.97222, -89.53056]]
   depto = []
-  clasify = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecNames:
+    if w == na:
+      break
+    no+=1
+  if na:
+    st.write("Estudiante: ", na, " pertenece al departamento de: ",BecLugar[no] )
+
   for B in BecLugar:
     st.write(B)
     if B == 'Alta Verapaz':
