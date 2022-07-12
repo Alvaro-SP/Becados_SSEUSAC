@@ -205,7 +205,7 @@ def becdep():
     [14.91167 , -91.36111],
     [14.97222, -89.53056]]
     ),
-    ['Chicago', 'Minneapolis', 'Louisville', 'Topeka'],
+    ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
     columns=['lat', 'lon'])
   st.map(data)
 
