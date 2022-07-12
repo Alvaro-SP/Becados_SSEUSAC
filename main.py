@@ -210,11 +210,10 @@ def becdep():
       break
     no+=1
   if na:
-    st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#0C77FF;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.write("Estudiante:  ", na, " pertenece al departamento de:  ",BecLugar[no] )
 
   for B in BecLugar:
-    st.write(B)
     if B == 'Alta Verapaz':
       depto.append(dep[0])
     elif B == 'Baja Verapaz':
