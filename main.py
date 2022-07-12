@@ -123,15 +123,62 @@ rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
 resformularios  = st.secrets["resformularios"]
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
 # st.write("TIPO DE DATO DE LAS LISTAS: ", type(rowsresformularios))
+
 #! ORGANNIZE DATA
 BecNames = [] #* NOMBRE DE LOS BECADOS
 for row in rowsresformularios:
-    # BecNames.append(row)
-    print(row)
+    BecNames.append(row[1])
+
+BecHoras = [] #* HORAS DE LOS BECADOS
+for row in rowsresformularios:
+    BecHoras.append(row[2])
+
+BecLugar = [] #* LUGAR DE LOS BECADOS
+for row in rowsresformularios:
+    BecLugar.append(row[5])
+
+BecTipo = [] #* TIPO DE TRABAJO
+for row in rowsresformularios:
+    BecNames.append(row[7])
+
+BecEdad = [] #* EDAD DEL BECADO
+for row in rowsresformularios:
+    BecEdad.append(row[8])
+
+BecNames = [] #* DEPTO DE REPLICA
+for row in rowsresformularios:
+    BecNames.append(row[9])
+
+BecCapacitadas = [] #* PERSONAS CAPACITADAS
+for row in rowsresformularios:
+    BecCapacitadas.append(row[10])
+
 def becdep():
   global rowsreportes, rowsresformularios
-  st.write(rowsresformularios)
+  # st.write(rowsresformularios)
+  data = pd.DataFrame({
+      'awesome cities' : ['Chicago', 'Minneapolis', 'Louisville', 'Topeka'],
+      'lat' : [41.868171, 44.979840,  38.257972, 39.030575],
+      'lon' : [-87.667458, -93.272474, -85.765187,  -95.702548]
+  })
 
+  # Adding code so we can have map default to the center of the data
+  midpoint = (np.average(data['lat']), np.average(data['lon']))
+
+  st.deck_gl_chart(
+              viewport={
+                  'latitude': midpoint[0],
+                  'longitude':  midpoint[1],
+                  'zoom': 4
+              },
+              layers=[{
+                  'type': 'ScatterplotLayer',
+                  'data': data,
+                  'radiusScale': 250,
+    'radiusMinPixels': 5,
+                  'getFillColor': [248, 24, 148],
+              }]
+          )
 def becedad():
   global colum, yaxe, df
 def becuni():
