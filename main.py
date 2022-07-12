@@ -179,32 +179,78 @@ def becdep():
     # 20 Suchitepéquez
     # 21 Totonicapán
     # 22 Zacapa
+  dep=[
+  [15.5, -90.333333],
+  [15.1009234, -90.3139743],
+  [14.6622, -90.8208],
+  [14.8, -89.54583],
+  [14.3579867773633, -89.84790854555509],
+  [14.3009, -90.78581],
+  [14.64072, -90.51327],
+  [15.31918, -91.47241],
+  [15.47225, -88.8407],
+  [14.63472, -89.98889],
+  [14.29167, -89.89583],
+  [16.8, -89.93333],
+  [14.83472, -91.51806],
+  [15.03085, -91.14871],
+  [14.53611, -91.67778],
+  [14.578414124412356, -90.79401954555287],
+  [14.96389 , -91.79444],
+  [14.15015235, -90.3508818353375],
+  [14.77222 , -91.18333],
+  [14.37766785, -91.3643907717613],
+  [14.91167 , -91.36111],
+  [14.97222, -89.53056]]
+  depto = []
+  for B in BecLugar:
+    if B == 'Alta Verapaz':
+      depto.append(dep[0])
+    elif B == 'Baja Verapaz':
+      depto.append(dep[1])
+    elif B == 'Chimaltenago':
+      depto.append(dep[1])
+    elif B == 'Chiquimula':
+      depto.append(dep[1])
+    elif B == 'El Progreso':
+      depto.append(dep[1])
+    elif B == 'Escuintla':
+      depto.append(dep[1])
+    elif B == 'Guatemala':
+      depto.append(dep[1])
+    elif B == 'Huehuetenango':
+      depto.append(dep[1])
+    elif B == 'Izabal':
+      depto.append(dep[1])
+    elif B == 'Jalapa':
+      depto.append(dep[1])
+    elif B == 'Jutiapa':
+      depto.append(dep[1])
+    elif B == 'Petén':
+      depto.append(dep[1])
+    elif B == 'Quetzaltenango':
+      depto.append(dep[1])
+    elif B == 'Quiché':
+      depto.append(dep[1])
+    elif B == 'Retalhuleu':
+      depto.append(dep[1])
+    elif B == 'Sacatepéquez':
+      depto.append(dep[1])
+    elif B == 'San Marcos':
+      depto.append(dep[1])
+    elif B == 'Santa Rosa':
+      depto.append(dep[1])
+    elif B == 'Sololá':
+      depto.append(dep[1])
+    elif B == 'Suchitepéquez':
+      depto.append(dep[1])
+    elif B == 'Totonicapán':
+      depto.append(dep[1])
+    elif B == 'Zacapa':
+      depto.append(dep[1])
 
   data = pd.DataFrame(
-    np.array([
-    [15.5, -90.333333],
-    [15.1009234, -90.3139743],
-    [14.6622, -90.8208],
-    [14.8, -89.54583],
-    [14.3579867773633, -89.84790854555509],
-    [14.3009, -90.78581],
-    [14.64072, -90.51327],
-    [15.31918, -91.47241],
-    [15.47225, -88.8407],
-    [14.63472, -89.98889],
-    [14.29167, -89.89583],
-    [16.8, -89.93333],
-    [14.83472, -91.51806],
-    [15.03085, -91.14871],
-    [14.53611, -91.67778],
-    [14.578414124412356, -90.79401954555287],
-    [14.96389 , -91.79444],
-    [14.15015235, -90.3508818353375],
-    [14.77222 , -91.18333],
-    [14.37766785, -91.3643907717613],
-    [14.91167 , -91.36111],
-    [14.97222, -89.53056]]
-    ),
+    np.array(depto),
     ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
     columns=['lat', 'lon'])
   st.map(data)
