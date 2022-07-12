@@ -203,6 +203,7 @@ def becdep():
   [14.91167 , -91.36111],
   [14.97222, -89.53056]]
   depto = []
+  clasify = st.selectbox("Nombre del Estudiante: ", BecNames,1)
   for B in BecLugar:
     st.write(B)
     if B == 'Alta Verapaz':
