@@ -251,7 +251,7 @@ def becdep():
 
   data = pd.DataFrame(
     np.array(depto),
-    ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
+    # ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
     columns=['lat', 'lon'])
   st.map(data)
 
