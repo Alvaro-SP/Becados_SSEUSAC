@@ -204,6 +204,7 @@ def becdep():
   [14.97222, -89.53056]]
   depto = []
   for B in BecLugar:
+    st.write(B)
     if B == 'Alta Verapaz':
       depto.append(dep[0])
     elif B == 'Baja Verapaz':
