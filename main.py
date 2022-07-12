@@ -206,8 +206,8 @@ def becdep():
     [14.97222, -89.53056]]
     ),
     columns=['lat', 'lon'])
-
   st.map(data)
+
 def becedad():
   global colum, yaxe, df
 def becuni():
