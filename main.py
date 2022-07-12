@@ -210,45 +210,45 @@ def becdep():
     elif B == 'Baja Verapaz':
       depto.append(dep[1])
     elif B == 'Chimaltenago':
-      depto.append(dep[1])
+      depto.append(dep[2])
     elif B == 'Chiquimula':
-      depto.append(dep[1])
+      depto.append(dep[3])
     elif B == 'El Progreso':
-      depto.append(dep[1])
+      depto.append(dep[4])
     elif B == 'Escuintla':
-      depto.append(dep[1])
+      depto.append(dep[5])
     elif B == 'Guatemala':
-      depto.append(dep[1])
+      depto.append(dep[6])
     elif B == 'Huehuetenango':
-      depto.append(dep[1])
+      depto.append(dep[7])
     elif B == 'Izabal':
-      depto.append(dep[1])
+      depto.append(dep[8])
     elif B == 'Jalapa':
-      depto.append(dep[1])
+      depto.append(dep[9])
     elif B == 'Jutiapa':
-      depto.append(dep[1])
+      depto.append(dep[10])
     elif B == 'Petén':
-      depto.append(dep[1])
+      depto.append(dep[11])
     elif B == 'Quetzaltenango':
-      depto.append(dep[1])
+      depto.append(dep[12])
     elif B == 'Quiché':
-      depto.append(dep[1])
+      depto.append(dep[13])
     elif B == 'Retalhuleu':
-      depto.append(dep[1])
+      depto.append(dep[14])
     elif B == 'Sacatepéquez':
-      depto.append(dep[1])
+      depto.append(dep[15])
     elif B == 'San Marcos':
-      depto.append(dep[1])
+      depto.append(dep[16])
     elif B == 'Santa Rosa':
-      depto.append(dep[1])
+      depto.append(dep[17])
     elif B == 'Sololá':
-      depto.append(dep[1])
+      depto.append(dep[18])
     elif B == 'Suchitepéquez':
-      depto.append(dep[1])
+      depto.append(dep[19])
     elif B == 'Totonicapán':
-      depto.append(dep[1])
+      depto.append(dep[20])
     elif B == 'Zacapa':
-      depto.append(dep[1])
+      depto.append(dep[21])
 
   data = pd.DataFrame(
     np.array(depto),
