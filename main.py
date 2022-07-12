@@ -166,19 +166,19 @@ def becdep():
   midpoint = (np.average(data['lat']), np.average(data['lon']))
 
   st.deck_gl_chart(
-              viewport={
-                  'latitude': midpoint[0],
-                  'longitude':  midpoint[1],
-                  'zoom': 4
-              },
-              layers=[{
-                  'type': 'ScatterplotLayer',
-                  'data': data,
-                  'radiusScale': 250,
-    'radiusMinPixels': 5,
-                  'getFillColor': [248, 24, 148],
-              }]
-          )
+    viewport={
+        'latitude': midpoint[0],
+        'longitude':  midpoint[1],
+        'zoom': 4
+    },
+    layers=[{
+      'type': 'ScatterplotLayer',
+      'data': data,
+      'radiusScale': 250,
+      'radiusMinPixels': 5,
+      'getFillColor': [248, 24, 148],
+    }]
+  )
 def becedad():
   global colum, yaxe, df
 def becuni():
