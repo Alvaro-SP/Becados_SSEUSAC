@@ -210,7 +210,8 @@ def becdep():
       break
     no+=1
   if na:
-    st.write("Estudiante: ", na, " pertenece al departamento de: ",BecLugar[no] )
+    st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.write("Estudiante:  ", na, " pertenece al departamento de:  ",BecLugar[no] )
 
   for B in BecLugar:
     st.write(B)
