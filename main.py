@@ -293,9 +293,6 @@ def becedad():
   newedad=[]
   for ns in BecEdad:
     newedad.append(ns)
-  st.write(newedad)
-  # Create distplot with custom bin_size
-  fig = ff.create_distplot([newedad], [BecNames])
   df = pd.DataFrame(newedad, columns =BecNames)
   # Plot!
   st.line_chart(df)
