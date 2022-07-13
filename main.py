@@ -273,7 +273,7 @@ def becedad():
   global rowsreportes, rowsresformularios
   na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
   no=0
-  for w in BecEdad:
+  for w in BecNames:
     if w == na:
       break
     no+=1
