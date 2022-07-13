@@ -139,11 +139,11 @@ for row in rowsresformularios:
 
 BecTipo = [] #* TIPO DE TRABAJO
 for row in rowsresformularios:
-    BecNames.append(row[7])
+    BecTipo.append(row[7])
 
 BecEdad = [] #* EDAD DEL BECADO
 for row in rowsresformularios:
-    BecEdad.append(row[8])
+    BecEdad.append(int(row[8]))
 
 Becdeptoreplic = [] #* DEPTO DE REPLICA
 for row in rowsresformularios:
@@ -210,8 +210,11 @@ def becdep():
       break
     no+=1
   if na:
-    tx= "Estudiante:  "+ na+ " pertenece al departamento de:  "+BecLugar[no] 
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{tx}</p>', unsafe_allow_html=True)
+# tx= "Estudiante:  "+ na+ "\n pertenece al departamento de: \n "+BecLugar[no] 
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">pertenece al departamento de: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecLugar[no]}</p>', unsafe_allow_html=True)
 
 
   for B in BecLugar:
@@ -267,7 +270,24 @@ def becdep():
   st.map(data)
 
 def becedad():
-  global colum, yaxe, df
+  global rowsreportes, rowsresformularios
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecEdad:
+    if w == na:
+      break
+    no+=1
+  if na:
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>', unsafe_allow_html=True)
+
+  st.subheader("Grafico de Edades")
+  chart_data = pd.DataFrame(
+  BecEdad,
+  columns=BecNames)
+  st.bar_chart(chart_data)
 def becuni():
   global colum, yaxe, df
 def becpro():
