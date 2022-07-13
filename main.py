@@ -284,10 +284,20 @@ def becedad():
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>', unsafe_allow_html=True)
 
   st.subheader("Grafico de Edades")
-  chart_data = pd.DataFrame(
-  np.array(BecEdad),
-  columns=BecNames)
-  st.bar_chart(chart_data)
+  # chart_data = pd.DataFrame(
+  # np.array(BecEdad),
+  # columns=BecNames)
+  # st.bar_chart(chart_data)
+  # Add histogram data
+  
+
+  # Create distplot with custom bin_size
+  fig = ff.create_distplot(
+          BecEdad, BecNames)
+
+  # Plot!
+  st.plotly_chart(fig, use_container_width=True)
+
 def becuni():
   global colum, yaxe, df
 def becpro():
