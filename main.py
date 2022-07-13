@@ -292,7 +292,8 @@ def becedad():
   
   newedad=[]
   for ns in BecEdad:
-    newedad.append(np.array(ns))
+    st.write(ns)
+    newedad.append(ns)
   st.write(newedad)
   # Create distplot with custom bin_size
   fig = ff.create_distplot(newedad, BecNames)
