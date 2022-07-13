@@ -293,7 +293,7 @@ def becedad():
 
   # Create distplot with custom bin_size
   fig = ff.create_distplot(
-          BecEdad, BecNames)
+          [BecEdad], BecNames)
 
   # Plot!
   st.plotly_chart(fig, use_container_width=True)
