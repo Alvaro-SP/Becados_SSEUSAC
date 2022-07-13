@@ -292,7 +292,7 @@ def becedad():
   
   newedad=[]
   for ns in BecEdad:
-    newedad.append([ns])
+    newedad.append([0,ns])
   df = pd.DataFrame(  np.array([newedad]), columns =BecNames)
   # Plot!
   st.bar_chart(df)
