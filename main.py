@@ -296,9 +296,9 @@ def becedad():
   st.write(newedad)
   # Create distplot with custom bin_size
   fig = ff.create_distplot([newedad], [BecNames])
-
+  df = pd.DataFrame(newedad, columns =BecNames)
   # Plot!
-  st.plotly_chart(fig, use_container_width=True)
+  st.line_chart(df)
 
 def becuni():
   global colum, yaxe, df
