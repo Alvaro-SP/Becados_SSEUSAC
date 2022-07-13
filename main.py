@@ -284,6 +284,8 @@ def becedad():
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>', unsafe_allow_html=True)
 
   st.subheader("Grafico de Edades")
+  st.write(BedEdad)
+  st.write(BecNames)
   chart_data = pd.DataFrame(
   BecEdad,
   columns=BecNames)
