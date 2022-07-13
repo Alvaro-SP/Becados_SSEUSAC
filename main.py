@@ -290,10 +290,11 @@ def becedad():
   # st.bar_chart(chart_data)
   # Add histogram data
   
-
+  newedad=[]
+  for ns in BecEdad:
+    newedad.append([ns])
   # Create distplot with custom bin_size
-  fig = ff.create_distplot(
-          [BecEdad], BecNames)
+  fig = ff.create_distplot(newedad, BecNames)
 
   # Plot!
   st.plotly_chart(fig, use_container_width=True)
