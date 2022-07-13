@@ -295,7 +295,7 @@ def becedad():
     newedad.append(ns)
   df = pd.DataFrame(  np.array([newedad, newedad]), columns =BecNames)
   # Plot!
-  st.line_chart(df)
+  st.area_chart(df)
 
 def becuni():
   global colum, yaxe, df
