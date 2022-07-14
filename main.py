@@ -298,25 +298,26 @@ def becedad():
   st.bar_chart(df)
 
 def becuni():
-  global colum, yaxe, df
+  global rowsreportes, rowsresformularios
+
+  hist_data = [x1, x2, x3]
+
+  group_labels = ['Group 1', 'Group 2', 'Group 3']
+  fig = ff.create_distplot(
+         hist_data, group_labels, bin_size=[.1, .25, .5])
+  st.plotly_chart(fig, use_container_width=True)
 def becpro():
-  global colum, yaxe, df
+  global rowsreportes, rowsresformularios
+
+
 def bechoras():
   global rowsreportes, rowsresformularios
   st.subheader("HORAS POR BECADOS")
-  options = st.multiselect(
-     'Selecciones uno o mas estudiantes: ',
-     ['Green', 'Yellow', 'Red', 'Blue'],
-     ['Yellow', 'Red'])
-def alg():
-  global colum, yaxe, df,header
+  wide_df = px.data.medals_wide()
+  st.write(px.data.medals_wide())
+  fig = px.bar(wide_df, x="nation", y=["gold", "silver", "bronze"], title="Wide-Form Input")
+  fig.show()
 
-  try:
-    header = list(df.columns)#Extract the field names
-    colum = st.selectbox("select X", header,1)
-    yaxe = st.selectbox("select Y", header,1)
-  except:
-    pass
 
 
 #! █████████████████████ OPERACIONES █████████████████████
@@ -341,7 +342,7 @@ def main():
   page_names_to_funcs = {
     "Becados por Departamento": becdep,
     "Becados por Edades": becedad,
-    "Becados por Unidad Academica": becuni,
+    # "Becados por Unidad Academica": becuni,
     "Becados por Proyecto en el que trabaja": becpro,
     "Total de Horas por cada Becado": bechoras
   }
