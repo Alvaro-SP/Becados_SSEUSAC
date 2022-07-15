@@ -119,7 +119,13 @@ def run_query(query):
 #! JALANDO LAS FILAS DE CADA HOJA.
 reportes = st.secrets["reportes"]
 rowsreportes = run_query(f'SELECT * FROM "{reportes}"')
+carne = [] #* CARNES
+for row in rowsreportes:
+  carne.append(row[0])
 
+NamesAll = [] #* TODOS NOMBRES
+for row in rowsreportes:
+  NamesAll.append(row[1])
 resformularios  = st.secrets["resformularios"]
 rowsresformularios = run_query(f'SELECT * FROM "{resformularios}"')
 # st.write("TIPO DE DATO DE LAS LISTAS: ", type(rowsresformularios))
@@ -317,10 +323,8 @@ def bechoras():
   # st.write(px.data.medals_wide())
   # st.write(type(px.data.medals_wide()))
   acumconts=[]
-  no=1
   for w in BecNames:
-    acumconts.append(no)
-    no+=1
+    acumconts.append(NamesAll.index(w))
   wide_df = {tuple(BecNames),tuple(BecHoras)}
   fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="Wide-Form Input")
   st.plotly_chart(fig)
