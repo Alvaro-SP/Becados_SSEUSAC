@@ -302,6 +302,24 @@ def becedad():
   df = pd.DataFrame(  np.array([newedad]), columns =BecNames)
   # Plot!
   st.bar_chart(df)
+  st.subheader("VISTA 2 EDAD DE BECADOS")
+  acumconts=[]
+  for w in BecNames:
+    acumconts.append(str(int(carne[NamesAll.index(w)])))
+  acumcontstemp=acumconts
+  acumconts.pop()
+  data = dict(
+    names=acumcontstemp,
+    parent=acumconts.insert(0,""),
+    value=newedad)
+
+  fig = px.sunburst(
+      data,
+      names='names',
+      parents='parent',
+      values='value',
+  )
+  st.plotly_chart(fig)
 
 def becuni():
   global rowsreportes, rowsresformularios
@@ -325,9 +343,9 @@ def becpro():
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
-  ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA', 'PERSONAS CAPACITADAS']]
+  ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
   for b in BecNames:
-    ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)],BecCapacitadas[BecNames.index(b)]])
+    ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)]])
   st.write(ndata)
   fig =  ff.create_table(ndata)
   st.plotly_chart(fig)
