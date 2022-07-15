@@ -357,7 +357,7 @@ def bechoras():
   acumconts.pop()
   data = dict(
     names=acumcontstemp,
-    parent=acumconts.insert(""),
+    parent=acumconts.insert(0,""),
     value=BecHoras)
 
   fig = px.sunburst(
