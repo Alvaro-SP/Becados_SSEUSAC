@@ -325,7 +325,7 @@ def becpro():
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
-  ndata=['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA', 'PERSONAS CAPACITADAS']
+  ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA', 'PERSONAS CAPACITADAS']]
   for b in BecNames:
     ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)],BecCapacitadas[BecNames.index(b)]])
   st.write(ndata)
