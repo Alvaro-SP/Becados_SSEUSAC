@@ -328,6 +328,7 @@ def becpro():
   ndata=['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA', 'PERSONAS CAPACITADAS']
   for b in BecNames:
     ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)],BecCapacitadas[BecNames.index(b)]])
+  st.write(ndata)
   fig =  ff.create_table(ndata)
   st.plotly_chart(fig)
 def bechoras():
