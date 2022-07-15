@@ -353,9 +353,11 @@ def bechoras():
   st.plotly_chart(fig)
 
   st.subheader("VISTA 2")
+  acumcontstemp=acumconts
+  acumconts.pop()
   data = dict(
-    names=acumconts,
-    parent=acumconts,
+    names=acumcontstemp,
+    parent=acumconts.insert(""),
     value=BecHoras)
 
   fig = px.sunburst(
