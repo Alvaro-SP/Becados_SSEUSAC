@@ -275,6 +275,10 @@ def becdep():
     columns=['lat', 'lon'])
   st.map(data)
 
+
+
+  fig = px.scatter_mapbox(data, lat="centroid_lat", lon="centroid_lon")
+  st.plotly_chart(fig)
 def becedad():
   global rowsreportes, rowsresformularios
   na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
