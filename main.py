@@ -284,8 +284,8 @@ def becdep():
     lonlist.append(d[1])
   data = pd.DataFrame(
     BecNames,
-    lat,
-    lon)
+    latlist,
+    lonlist)
   st.write(data)
   fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
   st.plotly_chart(fig)
