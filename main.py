@@ -314,10 +314,33 @@ def becuni():
   st.plotly_chart(fig, use_container_width=True)
 def becpro():
   global rowsreportes, rowsresformularios
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecNames:
+    if w == na:
+      break
+    no+=1
+  if na:
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
 
 
 def bechoras():
   global rowsreportes, rowsresformularios
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecNames:
+    if w == na:
+      break
+    no+=1
+  if na:
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene Acumuladas: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras[no]} Horas.</p>', unsafe_allow_html=True)
+
   st.subheader("HORAS POR BECADOS")
   # wide_df = px.data.medals_wide()
   # st.write(px.data.medals_wide())
@@ -326,9 +349,22 @@ def bechoras():
   for w in BecNames:
     acumconts.append(str(carne[NamesAll.index(w)]))
   wide_df = {tuple(BecNames),tuple(BecHoras)}
-  fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="Wide-Form Input")
+  fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="HORAS REALIZADAS POR CADA BECADO (GRAFICO)")
   st.plotly_chart(fig)
 
+  st.subheader("VISTA 2")
+  data = dict(
+    names=acumconts,
+    # parent=["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve" ],
+    value=BecHoras)
+
+  fig = px.sunburst(
+      data,
+      names='names',
+      # parents='parent',
+      values='value',
+  )
+  fig.show()
 
 #! █████████████████████ OPERACIONES █████████████████████
 
