@@ -364,7 +364,7 @@ def bechoras():
       # parents='parent',
       values='value',
   )
-  fig.show()
+  st.plotly_chart(fig)
 
 #! █████████████████████ OPERACIONES █████████████████████
 
