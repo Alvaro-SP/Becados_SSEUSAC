@@ -316,8 +316,13 @@ def bechoras():
   # wide_df = px.data.medals_wide()
   # st.write(px.data.medals_wide())
   # st.write(type(px.data.medals_wide()))
+  acumconts=[]
+  no=1
+  for w in BecNames:
+    acumconts.append(no)
+    no+=1
   wide_df = {tuple(BecNames),tuple(BecHoras)}
-  fig = px.bar(wide_df, x=BecNames, y=BecHoras,color=BecNames, title="Wide-Form Input")
+  fig = px.bar(wide_df, Becados=acumconts, Horas=BecHoras,color=BecNames, title="Wide-Form Input")
   st.plotly_chart(fig)
 
 
