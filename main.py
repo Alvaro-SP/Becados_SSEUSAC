@@ -355,13 +355,13 @@ def bechoras():
   st.subheader("VISTA 2")
   data = dict(
     names=acumconts,
-    # parent=["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve" ],
+    parent=acumconts
     value=BecHoras)
 
   fig = px.sunburst(
       data,
       names='names',
-      # parents='parent',
+      parents='parent',
       values='value',
   )
   st.plotly_chart(fig)
