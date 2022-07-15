@@ -356,17 +356,17 @@ def bechoras():
   acumcontstemp=acumconts
   acumconts.pop()
   data = dict(
-    carne=acumcontstemp,
+    names=acumcontstemp,
     Nombre = BecNames,
     parent=acumconts.insert(0,""),
-    Horas=BecHoras)
+    values=BecHoras)
 
   fig = px.sunburst(
       data,
-      carne='carne',
+      names='names',
       Nombre= 'Nombre',
       parents='parent',
-      values='Horas',
+      values='values',
   )
   st.plotly_chart(fig)
 
