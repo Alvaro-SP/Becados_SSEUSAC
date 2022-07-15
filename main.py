@@ -315,6 +315,7 @@ def bechoras():
   st.subheader("HORAS POR BECADOS")
   wide_df = px.data.medals_wide()
   st.write(px.data.medals_wide())
+  st.write(type(px.data.medals_wide()))
   fig = px.bar(wide_df, x="nation", y=["gold", "silver", "bronze"], title="Wide-Form Input")
   st.plotly_chart(fig)
 
