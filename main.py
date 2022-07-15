@@ -355,7 +355,7 @@ def bechoras():
   st.subheader("VISTA 2")
   data = dict(
     names=acumconts,
-    parent=acumconts
+    parent=acumconts,
     value=BecHoras)
 
   fig = px.sunburst(
