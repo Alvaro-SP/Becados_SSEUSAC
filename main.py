@@ -270,14 +270,21 @@ def becdep():
       depto.append(dep[21])
 
   data = pd.DataFrame(
-    np.array(depto),
+    names= BecNames
+    # np.array(depto),
     # ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
-    columns=['lat', 'lon'])
+    # columns=['lat', 'lon']
+    )
   st.map(data)
+  latlist = []
+  for d in depto:
+    latlist.append(d[0])
+  lonlist = []
+  for d in depto:
+    lonlist.append(d[1])
 
 
-
-  fig = px.scatter_mapbox(data, lat="lat", lon="lon")
+  fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
   st.plotly_chart(fig)
 def becedad():
   global rowsreportes, rowsresformularios
