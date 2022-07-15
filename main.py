@@ -276,19 +276,19 @@ def becdep():
   st.map(data)
 
   
-  latlist = []
-  for d in depto:
-    latlist.append(d[0])
-  lonlist = []
-  for d in depto:
-    lonlist.append(d[1])
-  data = pd.DataFrame(
-    BecNames,
-    latlist,
-    lonlist)
-  st.write(data)
-  fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
-  st.plotly_chart(fig)
+  # latlist = []
+  # for d in depto:
+  #   latlist.append(d[0])
+  # lonlist = []
+  # for d in depto:
+  #   lonlist.append(d[1])
+  # data = pd.DataFrame(
+  #   BecNames,
+  #   latlist,
+  #   lonlist)
+  # st.write(data)
+  # fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
+  # st.plotly_chart(fig)
 def becedad():
   global rowsreportes, rowsresformularios
   na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
