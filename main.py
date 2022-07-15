@@ -277,7 +277,7 @@ def becdep():
 
 
 
-  fig = px.scatter_mapbox(data, lat="centroid_lat", lon="centroid_lon")
+  fig = px.scatter_mapbox(data, lat="lat", lon="lon")
   st.plotly_chart(fig)
 def becedad():
   global rowsreportes, rowsresformularios
