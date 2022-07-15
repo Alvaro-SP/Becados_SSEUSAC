@@ -269,12 +269,6 @@ def becdep():
     elif B == 'Zacapa':
       depto.append(dep[21])
 
-  data = pd.DataFrame(
-    BecNames
-    # np.array(depto),
-    # ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
-    # columns=['lat', 'lon']
-    )
   st.map(data)
   latlist = []
   for d in depto:
@@ -282,7 +276,14 @@ def becdep():
   lonlist = []
   for d in depto:
     lonlist.append(d[1])
-
+  data = pd.DataFrame(
+      BecNames,
+      lat=latlist,
+      lon = lonlist
+      # np.array(depto),
+      # ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
+      # columns=['lat', 'lon']
+      )
 
   fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
   st.plotly_chart(fig)
