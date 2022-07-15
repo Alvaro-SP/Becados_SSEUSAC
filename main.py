@@ -322,7 +322,7 @@ def bechoras():
     acumconts.append(no)
     no+=1
   wide_df = {tuple(BecNames),tuple(BecHoras)}
-  fig = px.bar(wide_df, Becados=acumconts, Horas=BecHoras,color=BecNames, title="Wide-Form Input")
+  fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="Wide-Form Input")
   st.plotly_chart(fig)
 
 
