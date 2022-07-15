@@ -338,7 +338,6 @@ def main():
   st.header('Bienvenidos :sunglasses:', anchor=None)
 
   cfile()
-  alg()
   page_names_to_funcs = {
     "Becados por Departamento": becdep,
     "Becados por Edades": becedad,
