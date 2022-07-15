@@ -347,7 +347,7 @@ def bechoras():
   # st.write(type(px.data.medals_wide()))
   acumconts=[]
   for w in BecNames:
-    acumconts.append(str(carne[NamesAll.index(w)]))
+    acumconts.append(str(int(carne[NamesAll.index(w)])))
   wide_df = {tuple(BecNames),tuple(BecHoras)}
   fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="HORAS REALIZADAS POR CADA BECADO (GRAFICO)")
   st.plotly_chart(fig)
