@@ -317,9 +317,8 @@ def bechoras():
   # st.write(px.data.medals_wide())
   # st.write(type(px.data.medals_wide()))
   wide_df = {tuple(BecNames),tuple(BecHoras)}
-  fig = px.bar(wide_df, x=BecNames, y=BecHoras, title="Wide-Form Input")
+  fig = px.bar(wide_df, x=BecNames, y=BecHoras,color="species", title="Wide-Form Input")
   st.plotly_chart(fig)
-
 
 
 #! █████████████████████ OPERACIONES █████████████████████
