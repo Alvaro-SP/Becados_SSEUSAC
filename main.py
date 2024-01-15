@@ -314,22 +314,22 @@ def becedad():
   chart_data = pd.DataFrame({'Nombres': BecNames, 'Edades': BecEdad})
   st.bar_chart(chart_data.set_index('Nombres'))
 
-  st.subheader("VISTA 2 EDAD DE BECADOS (Sunburst)")
-  acumconts = [str(int(carne[NamesAll.index(w)])) for w in BecNames]
-  acumcontstemp = acumconts
-  acumconts.pop()
-  data = dict(
-      names=acumcontstemp,
-      parent=acumconts.insert(0, ""),
-      value=BecEdad)
+  # st.subheader("VISTA 2 EDAD DE BECADOS (Sunburst)")
+  # acumconts = [str(int(carne[NamesAll.index(w)])) for w in BecNames]
+  # acumcontstemp = acumconts
+  # acumconts.pop()
+  # data = dict(
+  #     names=acumcontstemp,
+  #     parent=acumconts.insert(0, ""),
+  #     value=BecEdad)
 
-  fig = px.sunburst(
-      data,
-      names='names',
-      parents='parent',
-      values='value',
-  )
-  st.plotly_chart(fig)
+  # fig = px.sunburst(
+  #     data,
+  #     names='names',
+  #     parents='parent',
+  #     values='value',
+  # )
+  # st.plotly_chart(fig)
 
 def becuni():
   global rowsreportes, rowsresformularios
