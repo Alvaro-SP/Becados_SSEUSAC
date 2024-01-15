@@ -20,6 +20,8 @@ import pandas as pd
 from sklearn import linear_model
 import streamlit.components.v1 as components
 from gsheetsdb import connect
+import pandas_bokeh
+from bokeh.models import ColumnDataSource
 # Create a connection object.
 conn = connect()
 # Perform SQL query on the Google Sheet.
@@ -333,38 +335,43 @@ def becedad():
 
 def becuni():
   global rowsreportes, rowsresformularios
-
   hist_data = [x1, x2, x3]
-
   group_labels = ['Group 1', 'Group 2', 'Group 3']
-  fig = ff.create_distplot(
-         hist_data, group_labels, bin_size=[.1, .25, .5])
+  fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
   st.plotly_chart(fig, use_container_width=True)
+
+pandas_bokeh.output_notebook()
 def becpro():
   global rowsreportes, rowsresformularios
-  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
-  no=0
+  na = st.selectbox("Nombre del Estudiante: ", BecNames, 1)
+  no = 0
   for w in BecNames:
-    if w == na:
-      break
-    no+=1
+      if w == na:
+          break
+      no += 1
   if na:
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
-  ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
-  for b in BecNames:
-    ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)]])
-  # st.write(ndata)
-  fig =  ff.create_table(ndata)
-   # Ajustar el diseño para evitar superposición
-  fig.update_layout(
-      autosize=True,
-      margin=dict(l=0, r=0, b=0, t=0),
-      height=len(ndata) * 30,  # Ajusta la altura en función del número de filas
-  )
-  st.plotly_chart(fig)
+      st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
+                  unsafe_allow_html=True)
+      st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
+                  unsafe_allow_html=True)
+      st.markdown(
+          f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>',
+          unsafe_allow_html=True)
+      st.markdown(
+          f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>',
+          unsafe_allow_html=True)
+
+  st.subheader("Tabla Dinámica de Becados")
+  df = pd.DataFrame({
+      'BECADOS': BecNames,
+      'AREA DE TRABAJO': BecTipo,
+      'DEPTO DONDE TRABAJA': Becdeptoreplic
+  })
+
+  # Mostrar la tabla utilizando pandas_bokeh
+  df_bokeh = df.set_index('BECADOS')
+  st.bokeh_chart(df_bokeh)
+
 def bechoras():
   global rowsreportes, rowsresformularios
   na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
@@ -432,8 +439,8 @@ def main():
     "Total de Horas por cada Becado": bechoras
   }
 
-  st.sidebar.image('https://www.redfia.net.gt/wp-content/uploads/2019/09/LOGO-USAC-2012-1.png')
-  demo_name = st.sidebar.selectbox("Algoritmos: ", page_names_to_funcs.keys())
+  st.sidebar.image('https://sgccc.org.gt/wp-content/uploads/2021/03/LOGO-USAC.-Rec-1.png')
+  demo_name = st.sidebar.selectbox("Reportes: ", page_names_to_funcs.keys())
   page_names_to_funcs[demo_name]()
   #? Área para seleccionar las operaciones que desea realizar según lo seleccionado anteriormente.
   #? Área donde se puedan parametrizar los distintos algoritmos .
