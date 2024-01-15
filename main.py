@@ -149,8 +149,8 @@ for row in rowsresformularios:
 
 BecEdad = [] #* EDAD DEL BECADO
 for row in rowsresformularios:
-    print(row[8])
-    BecEdad.append(int(row[8]))
+    if row[8] is not None:
+      BecEdad.append(int(row[8]))
 
 Becdeptoreplic = [] #* DEPTO DE REPLICA
 for row in rowsresformularios:
