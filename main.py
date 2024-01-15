@@ -361,8 +361,14 @@ def becpro():
   ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
   for b in BecNames:
     ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)]])
-  st.write(ndata)
+  # st.write(ndata)
   fig =  ff.create_table(ndata)
+   # Ajustar el diseño para evitar superposición
+  fig.update_layout(
+      autosize=True,
+      margin=dict(l=0, r=0, b=0, t=0),
+      height=len(ndata) * 30,  # Ajusta la altura en función del número de filas
+  )
   st.plotly_chart(fig)
 def bechoras():
   global rowsreportes, rowsresformularios
