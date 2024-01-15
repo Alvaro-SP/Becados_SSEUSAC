@@ -292,41 +292,36 @@ def becdep():
   # st.plotly_chart(fig)
 def becedad():
   global rowsreportes, rowsresformularios
-  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
-  no=0
+  na = st.selectbox("Nombre del Estudiante: ", BecNames, 1)
+  no = 0
   for w in BecNames:
-    if w == na:
-      break
-    no+=1
+      if w == na:
+          break
+      no += 1
   if na:
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene: </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>', unsafe_allow_html=True)
+      st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
+                  unsafe_allow_html=True)
+      st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
+                  unsafe_allow_html=True)
+      st.markdown(
+          f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Tiene: </p>',
+          unsafe_allow_html=True)
+      st.markdown(
+          f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>',
+          unsafe_allow_html=True)
 
-  st.subheader("Grafico de Edades")
-  # chart_data = pd.DataFrame(
-  # np.array(BecEdad),
-  # columns=BecNames)
-  # st.bar_chart(chart_data)
-  # Add histogram data
-  
-  newedad=[]
-  for ns in BecEdad:
-    newedad.append(ns)
-  df = pd.DataFrame(  np.array([newedad]), columns =BecNames)
-  # Plot!
-  st.bar_chart(df)
-  st.subheader("VISTA 2 EDAD DE BECADOS")
-  acumconts=[]
-  for w in BecNames:
-    acumconts.append(str(int(carne[NamesAll.index(w)])))
-  acumcontstemp=acumconts
+  st.subheader("Gráfico de Edades (Barras)")
+  chart_data = pd.DataFrame({'Nombres': BecNames, 'Edades': BecEdad})
+  st.bar_chart(chart_data.set_index('Nombres'))
+
+  st.subheader("VISTA 2 EDAD DE BECADOS (Sunburst)")
+  acumconts = [str(int(carne[NamesAll.index(w)])) for w in BecNames]
+  acumcontstemp = acumconts
   acumconts.pop()
   data = dict(
-    names=acumcontstemp,
-    parent=acumconts.insert(0,""),
-    value=newedad)
+      names=acumcontstemp,
+      parent=acumconts.insert(0, ""),
+      value=BecEdad)
 
   fig = px.sunburst(
       data,
@@ -426,9 +421,9 @@ def main():
     </style>  """,
   unsafe_allow_html=True,
   )
-  st.header('Bienvenidos :sunglasses:', anchor=None)
+  # st.header('Bienvenidos :sunglasses:', anchor=None)
 
-  cfile()
+  # cfile()
   page_names_to_funcs = {
     "Becados por Departamento": becdep,
     "Becados por Edades": becedad,
