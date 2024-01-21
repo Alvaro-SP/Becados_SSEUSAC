@@ -159,7 +159,7 @@ for row in rowsresformularios:
 BecCapacitadas = [] #* PERSONAS CAPACITADAS
 for row in rowsresformularios:
     BecCapacitadas.append(row[10])
-
+# ! 2022
 def becdep():
   global rowsreportes, rowsresformularios
   # st.write(rowsresformularios)
@@ -290,6 +290,7 @@ def becdep():
   # st.write(data)
   # fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
   # st.plotly_chart(fig)
+
 def becedad():
   global rowsreportes, rowsresformularios
   na = st.selectbox("Nombre del Estudiante: ", BecNames, 1)
@@ -363,7 +364,255 @@ def becpro():
       height=len(ndata) * 30,  # Ajusta la altura en función del número de filas
   )
   st.plotly_chart(fig)
+
 def bechoras():
+  global rowsreportes, rowsresformularios
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecNames:
+    if w == na:
+      break
+    no+=1
+  if na:
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene Acumuladas: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras[no]} Horas.</p>', unsafe_allow_html=True)
+
+  st.subheader("HORAS POR BECADOS")
+  # wide_df = px.data.medals_wide()
+  # st.write(px.data.medals_wide())
+  # st.write(type(px.data.medals_wide()))
+  acumconts=[]
+  for w in BecNames:
+    acumconts.append(str(int(carne[NamesAll.index(w)])))
+  wide_df = {tuple(BecNames),tuple(BecHoras)}
+  fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="HORAS REALIZADAS POR CADA BECADO (GRAFICO)")
+  st.plotly_chart(fig)
+
+  st.subheader("VISTA 2")
+  acumcontstemp=acumconts
+  acumconts.pop()
+  data = dict(
+    names=acumcontstemp,
+    parent=acumconts.insert(0,""),
+    value=BecHoras)
+
+  fig = px.sunburst(
+      data,
+      names='names',
+      parents='parent',
+      values='value',
+  )
+  st.plotly_chart(fig)
+
+# ! 2023
+def becdep2():
+  global rowsreportes, rowsresformularios
+  # st.write(rowsresformularios)
+  # *La división política de Guatemala consta de 22 Departamentos:
+    # 1  Alta Verapaz
+    # 2 Baja Verapaz
+    # 3 Chimaltenango
+    # 4 Chiquimula
+    # 5 El Progreso
+    # 6 Escuintla
+    # 7 Guatemala
+    # 8 Huehuetenango
+    # 9 Izabal
+    # 10 Jalapa
+    # 11 Jutiapa
+    # 12 Petén
+    # 13 Quetzaltenango
+    # 14 Quiché
+    # 15 Retalhuleu
+    # 16 Sacatepéquez
+    # 17 San marcos
+    # 18 Santa rosa
+    # 19 Sololá
+    # 20 Suchitepéquez
+    # 21 Totonicapán
+    # 22 Zacapa
+  dep=[
+  [15.5, -90.333333],
+  [15.1009234, -90.3139743],
+  [14.6622, -90.8208],
+  [14.8, -89.54583],
+  [14.3579867773633, -89.84790854555509],
+  [14.3009, -90.78581],
+  [14.64072, -90.51327],
+  [15.31918, -91.47241],
+  [15.47225, -88.8407],
+  [14.63472, -89.98889],
+  [14.29167, -89.89583],
+  [16.8, -89.93333],
+  [14.83472, -91.51806],
+  [15.03085, -91.14871],
+  [14.53611, -91.67778],
+  [14.578414124412356, -90.79401954555287],
+  [14.96389 , -91.79444],
+  [14.15015235, -90.3508818353375],
+  [14.77222 , -91.18333],
+  [14.37766785, -91.3643907717613],
+  [14.91167 , -91.36111],
+  [14.97222, -89.53056]]
+  depto = []
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecNames:
+    if w == na:
+      break
+    no+=1
+  if na:
+# tx= "Estudiante:  "+ na+ "\n pertenece al departamento de: \n "+BecLugar[no] 
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">pertenece al departamento de: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecLugar[no]}</p>', unsafe_allow_html=True)
+
+
+  for B in BecLugar:
+    if B == 'Alta Verapaz':
+      depto.append(dep[0])
+    elif B == 'Baja Verapaz':
+      depto.append(dep[1])
+    elif B == 'Chimaltenago':
+      depto.append(dep[2])
+    elif B == 'Chiquimula':
+      depto.append(dep[3])
+    elif B == 'El Progreso':
+      depto.append(dep[4])
+    elif B == 'Escuintla':
+      depto.append(dep[5])
+    elif B == 'Guatemala':
+      depto.append(dep[6])
+    elif B == 'Huehuetenango':
+      depto.append(dep[7])
+    elif B == 'Izabal':
+      depto.append(dep[8])
+    elif B == 'Jalapa':
+      depto.append(dep[9])
+    elif B == 'Jutiapa':
+      depto.append(dep[10])
+    elif B == 'Petén':
+      depto.append(dep[11])
+    elif B == 'Quetzaltenango':
+      depto.append(dep[12])
+    elif B == 'Quiché':
+      depto.append(dep[13])
+    elif B == 'Retalhuleu':
+      depto.append(dep[14])
+    elif B == 'Sacatepéquez':
+      depto.append(dep[15])
+    elif B == 'San Marcos':
+      depto.append(dep[16])
+    elif B == 'Santa Rosa':
+      depto.append(dep[17])
+    elif B == 'Sololá':
+      depto.append(dep[18])
+    elif B == 'Suchitepéquez':
+      depto.append(dep[19])
+    elif B == 'Totonicapán':
+      depto.append(dep[20])
+    elif B == 'Zacapa':
+      depto.append(dep[21])
+
+  data = pd.DataFrame(
+    np.array(depto),
+    # ['Alta Verapaz', 'Baja Verapaz', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango', 'Chimaltenango'],
+    columns=['lat', 'lon'])
+  st.map(data)
+
+  
+  # latlist = []
+  # for d in depto:
+  #   latlist.append(d[0])
+  # lonlist = []
+  # for d in depto:
+  #   lonlist.append(d[1])
+  # data = pd.DataFrame(
+  #   BecNames,
+  #   latlist,
+  #   lonlist)
+  # st.write(data)
+  # fig = px.scatter_mapbox(data, lat=latlist, lon=lonlist,size_max=15, zoom=10)
+  # st.plotly_chart(fig)
+
+def becedad2():
+  global rowsreportes, rowsresformularios
+  na = st.selectbox("Nombre del Estudiante: ", BecNames, 1)
+  no = 0
+  for w in BecNames:
+      if w == na:
+          break
+      no += 1
+  if na:
+      st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
+                  unsafe_allow_html=True)
+      st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
+                  unsafe_allow_html=True)
+      st.markdown(
+          f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Tiene: </p>',
+          unsafe_allow_html=True)
+      st.markdown(
+          f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>',
+          unsafe_allow_html=True)
+
+  st.subheader("Gráfico de Edades (Barras)")
+  chart_data = pd.DataFrame({'Nombres': BecNames, 'Edades': BecEdad})
+  st.bar_chart(chart_data.set_index('Nombres'))
+
+  # st.subheader("VISTA 2 EDAD DE BECADOS (Sunburst)")
+  # acumconts = [str(int(carne[NamesAll.index(w)])) for w in BecNames]
+  # acumcontstemp = acumconts
+  # acumconts.pop()
+  # data = dict(
+  #     names=acumcontstemp,
+  #     parent=acumconts.insert(0, ""),
+  #     value=BecEdad)
+
+  # fig = px.sunburst(
+  #     data,
+  #     names='names',
+  #     parents='parent',
+  #     values='value',
+  # )
+  # st.plotly_chart(fig)
+
+def becuni2():
+  global rowsreportes, rowsresformularios
+  hist_data = [x1, x2, x3]
+  group_labels = ['Group 1', 'Group 2', 'Group 3']
+  fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
+  st.plotly_chart(fig, use_container_width=True)
+
+def becpro2():
+  global rowsreportes, rowsresformularios
+  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  no=0
+  for w in BecNames:
+    if w == na:
+      break
+    no+=1
+  if na:
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
+  ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
+  for b in BecNames:
+    ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)]])
+  # st.write(ndata)
+  fig =  ff.create_table(ndata)
+  # Ajustar el diseño para evitar superposición
+  fig.update_layout(
+      autosize=True,
+      margin=dict(l=0, r=0, b=0, t=0),
+      height=len(ndata) * 30,  # Ajusta la altura en función del número de filas
+  )
+  st.plotly_chart(fig)
+
+def bechoras2():
   global rowsreportes, rowsresformularios
   na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
   no=0
@@ -408,8 +657,13 @@ def bechoras():
 
 def main():
   st.image('https://becas.usac.edu.gt/wp-content/uploads/2019/05/cropped-bannerN.png')
-  st.title('Reporte de Servicio Social Becados SSE 2022')
+  st.title('Reporte de Servicio Social Becados SSE')
   st.write()
+
+  # Add a dropdown to select the year
+  selected_year = st.sidebar.selectbox("Seleccione el Año:", ["2022", "2023", "2024"])
+
+
   st.markdown(
     """  <style>  
     span[data-baseweb="tag"] 
@@ -422,13 +676,25 @@ def main():
   # st.header('Bienvenidos :sunglasses:', anchor=None)
 
   # cfile()
-  page_names_to_funcs = {
-    "Becados por Departamento": becdep,
-    "Becados por Edades": becedad,
-    # "Becados por Unidad Academica": becuni,
-    "Becados por Proyecto en el que trabaja": becpro,
-    "Total de Horas por cada Becado": bechoras
-  }
+  page_names_to_funcs = {}
+  if selected_year=="2022":
+    st.title('Becados 2022')
+    page_names_to_funcs = {
+      "Becados por Departamento": becdep,
+      "Becados por Edades": becedad,
+      # "Becados por Unidad Academica": becuni,
+      "Becados por Proyecto en el que trabaja": becpro,
+      "Total de Horas por cada Becado": bechoras
+    }
+  elif selected_year=="2023":
+    st.title('Becados 2023')
+    page_names_to_funcs = {
+      "Becados por Departamento": becdep2,
+      "Becados por Edades": becedad2,
+      # "Becados por Unidad Academica": becuni,
+      "Becados por Proyecto en el que trabaja": becpro2,
+      "Total de Horas por cada Becado": bechoras2
+    }
 
   st.sidebar.image('https://sgccc.org.gt/wp-content/uploads/2021/03/LOGO-USAC.-Rec-1.png')
   demo_name = st.sidebar.selectbox("Reportes: ", page_names_to_funcs.keys())
