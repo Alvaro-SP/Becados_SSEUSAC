@@ -406,7 +406,7 @@ def bechoras():
   )
   st.plotly_chart(fig)
 
-#! JALANDO LAS FILAS DE CADA HOJA.
+#! JALANDO LAS FILAS DE CADA HOJA 2023.
 reportes2 = st.secrets["reportes2"]
 rowsreportes2 = run_query(f'SELECT * FROM "{reportes2}"')
 carne2 = [] #* CARNES
@@ -414,7 +414,7 @@ for row in rowsreportes2:
   carne2.append(row[0])
 
 NamesAll2 = [] #* TODOS NOMBRES
-for row in rowsreportes:
+for row in rowsreportes2:
   NamesAll2.append(row[1])
 resformularios2  = st.secrets["resformularios2"]
 rowsresformularios2 = run_query(f'SELECT * FROM "{resformularios2}"')
@@ -451,7 +451,7 @@ for row in rowsresformularios2:
     BecCapacitadas2.append(row[10])
 # ! 2023
 def becdep2():
-  global rowsreportes, rowsresformularios2
+  global rowsreportes2, rowsresformularios2
   # st.write(rowsresformularios2)
   # *La división política de Guatemala consta de 22 Departamentos:
     # 1  Alta Verapaz
@@ -623,14 +623,14 @@ def becedad2():
   # st.plotly_chart(fig)
 
 def becuni2():
-  global rowsreportes, rowsresformularios2
+  global rowsreportes2, rowsresformularios2
   hist_data = [x1, x2, x3]
   group_labels = ['Group 1', 'Group 2', 'Group 3']
   fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
   st.plotly_chart(fig, use_container_width=True)
 
 def becpro2():
-  global rowsreportes, rowsresformularios2
+  global rowsreportes2, rowsresformularios2
   na = st.selectbox("Nombre del Estudiante: ", BecNames2,1)
   no=0
   for w in BecNames2:
@@ -656,7 +656,7 @@ def becpro2():
   st.plotly_chart(fig)
 
 def bechoras2():
-  global rowsreportes, rowsresformularios2
+  global rowsreportes2, rowsresformularios2
   na = st.selectbox("Nombre del Estudiante: ", BecNames2,1)
   no=0
   for w in BecNames2:
@@ -702,7 +702,7 @@ def main():
   st.image('https://becas.usac.edu.gt/wp-content/uploads/2019/05/cropped-bannerN.png')
   st.title('Reporte de Servicio Social Becados SSE')
   st.write()
-
+  st.sidebar.image('https://sgccc.org.gt/wp-content/uploads/2021/03/LOGO-USAC.-Rec-1.png')
   # Add a dropdown to select the year
   selected_year = st.sidebar.selectbox("Seleccione el Año:", ["2022", "2023", "2024"])
 
@@ -739,7 +739,7 @@ def main():
       "Total de Horas por cada Becado": bechoras2
     }
 
-  st.sidebar.image('https://sgccc.org.gt/wp-content/uploads/2021/03/LOGO-USAC.-Rec-1.png')
+  
   demo_name = st.sidebar.selectbox("Reportes: ", page_names_to_funcs.keys())
   page_names_to_funcs[demo_name]()
   #? Área para seleccionar las operaciones que desea realizar según lo seleccionado anteriormente.
