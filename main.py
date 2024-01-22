@@ -732,16 +732,11 @@ def becbeneficiadas2():
     # Mostrar el total de personas beneficiadas por departamento en una tabla
   st.subheader("Total de Personas Beneficiadas por Departamento")
 
-  # Crear una lista de tuplas para los datos de la tabla
-  tabla_datos = [("Departamento", "Total Personas Beneficiadas")]
-  for depto, total_personas in total_personas_por_depto.items():
-      tabla_datos.append((depto, int(total_personas)))
+    # Crear un DataFrame con los datos
+  tabla_datos = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas Beneficiadas'])
 
-  # Crear una cadena de texto en formato Markdown para la tabla
-  tabla_markdown = "\n".join([f"| {dato[0]} | {dato[1]} |" for dato in tabla_datos])
-
-  # Mostrar la tabla usando Markdown
-  st.markdown(tabla_markdown)
+  # Mostrar la tabla en Streamlit
+  st.table(tabla_datos)
 #! █████████████████████ OPERACIONES █████████████████████
 
 def main():
