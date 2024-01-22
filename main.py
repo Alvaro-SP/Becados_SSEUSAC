@@ -721,6 +721,16 @@ def becbeneficiadas2():
   # Crear un gráfico de barras para visualizar los totales por departamento
   chart_data = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas'])
   st.bar_chart(chart_data.set_index('Departamento'))
+
+  
+  # Convertir el diccionario a un DataFrame
+  chart_data = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas'])
+
+  # Crear una gráfica de barras con Plotly Express
+  fig = px.bar(chart_data, x='Departamento', y='Total Personas', title='Total de Personas Beneficiadas por Departamento')
+
+  # Mostrar la gráfica en Streamlit
+  st.plotly_chart(fig)
 #! █████████████████████ OPERACIONES █████████████████████
 
 def main():
