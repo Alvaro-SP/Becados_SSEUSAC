@@ -729,6 +729,11 @@ def bechoras2():
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras2[no]} Horas.</p>', unsafe_allow_html=True)
 
   st.subheader("HORAS POR BECADOS")
+  # Sumar todas las horas de los becados
+  total_horas = sum(BecHoras2)
+
+  # Mostrar el total de horas en un texto grande y resaltado
+  st.markdown(f'<p style="background-color:#00FF00;color:#05000A;font-size:36px;border-radius:5%;">Se han Certificado un total de: {total_horas} Horas de Servicio Social</p>', unsafe_allow_html=True)
   # wide_df = px.data.medals_wide()
   # st.write(px.data.medals_wide())
   # st.write(type(px.data.medals_wide()))
