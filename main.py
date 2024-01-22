@@ -704,7 +704,7 @@ def becpro2():
 
   # Llenar la lista con datos
   for b in BecNames2:
-      ndata.append([b, BecTipo[BecNames2.index(b)], Becdeptoreplic[BecNames2.index(b)]])
+      ndata.append([b, BecTipo2[BecNames2.index(b)], Becdeptoreplic2[BecNames2.index(b)]])
 
   # Crear un DataFrame para la tabla
   tabla_datos = pd.DataFrame(ndata[1:], columns=ndata[0])
