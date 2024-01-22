@@ -368,7 +368,7 @@ def becpro():
   tabla_datos = pd.DataFrame(ndata[1:], columns=ndata[0])
 
   # Mostrar la tabla en Streamlit
-  st.subheader("Área de Trabajo y Departamento por Estudiante")
+  st.subheader("Área de Trabajo y Departamento de Todos los Estudiantes")
   st.table(tabla_datos)
 
 
@@ -683,29 +683,36 @@ def becuni2():
 
 def becpro2():
   global rowsreportes2, rowsresformularios2
-  na = st.selectbox("Nombre del Estudiante: ", BecNames2,1)
-  no=0
+
+  # Obtener el nombre seleccionado
+  na = st.selectbox("Nombre del Estudiante: ", BecNames2, 1)
+  no = 0
+
+  # Encontrar el índice del estudiante seleccionado
   for w in BecNames2:
-    if w == na:
-      break
-    no+=1
+      if w == na:
+          break
+      no += 1
+
+  # Mostrar información del estudiante seleccionado
   if na:
-    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo2[no]} </p>', unsafe_allow_html=True)
-  ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
+      st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
+      st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo2[no]} </p>', unsafe_allow_html=True)
+
+  # Crear una lista de listas para los datos de la tabla
+  ndata = [['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
+
+  # Llenar la lista con datos
   for b in BecNames2:
-    ndata.append([b,BecTipo2[BecNames2.index(b)],Becdeptoreplic2[BecNames2.index(b)]])
-  # st.write(ndata)
-  fig =  ff.create_table(ndata)
-  # Ajustar el diseño para evitar superposición
-  fig.update_layout(
-      autosize=True,
-      margin=dict(l=0, r=0, b=0, t=0),
-      height=len(ndata) * 30,  # Ajusta la altura en función del número de filas
-  )
-  st.plotly_chart(fig)
+      ndata.append([b, BecTipo[BecNames2.index(b)], Becdeptoreplic[BecNames2.index(b)]])
+
+  # Crear un DataFrame para la tabla
+  tabla_datos = pd.DataFrame(ndata[1:], columns=ndata[0])
+
+  # Mostrar la tabla en Streamlit
+  st.subheader("Área de Trabajo y Departamento de Todos los Estudiantes")
+  st.table(tabla_datos)
+
 
 def bechoras2():
   global rowsreportes2, rowsresformularios2
