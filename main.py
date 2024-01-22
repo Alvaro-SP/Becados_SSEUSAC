@@ -406,10 +406,53 @@ def bechoras():
   )
   st.plotly_chart(fig)
 
+#! JALANDO LAS FILAS DE CADA HOJA.
+reportes2 = st.secrets["reportes2"]
+rowsreportes2 = run_query(f'SELECT * FROM "{reportes2}"')
+carne2 = [] #* CARNES
+for row in rowsreportes2:
+  carne2.append(row[0])
+
+NamesAll2 = [] #* TODOS NOMBRES
+for row in rowsreportes:
+  NamesAll2.append(row[1])
+resformularios2  = st.secrets["resformularios2"]
+rowsresformularios2 = run_query(f'SELECT * FROM "{resformularios2}"')
+# st.write("TIPO DE DATO DE LAS LISTAS: ", type(rowsresformularios))
+
+#! ORGANNIZE DATA
+BecNames2 = [] #* NOMBRE DE LOS BECADOS
+for row in rowsresformularios2:
+    BecNames2.append(row[1])
+
+BecHoras2 = [] #* HORAS DE LOS BECADOS
+for row in rowsresformularios2:
+    BecHoras2.append(row[2])
+
+BecLugar2 = [] #* LUGAR DE LOS BECADOS
+for row in rowsresformularios2:
+    BecLugar2.append(row[5])
+
+BecTipo2 = [] #* TIPO DE TRABAJO
+for row in rowsresformularios2:
+    BecTipo2.append(row[7])
+
+BecEdad2 = [] #* EDAD DEL BECADO
+for row in rowsresformularios2:
+    if row[8] is not None:
+      BecEdad2.append(int(row[8]))
+
+Becdeptoreplic2 = [] #* DEPTO DE REPLICA
+for row in rowsresformularios2:
+    Becdeptoreplic2.append(row[9])
+
+BecCapacitadas2 = [] #* PERSONAS CAPACITADAS
+for row in rowsresformularios2:
+    BecCapacitadas2.append(row[10])
 # ! 2023
 def becdep2():
-  global rowsreportes, rowsresformularios
-  # st.write(rowsresformularios)
+  global rowsreportes, rowsresformularios2
+  # st.write(rowsresformularios2)
   # *La división política de Guatemala consta de 22 Departamentos:
     # 1  Alta Verapaz
     # 2 Baja Verapaz
@@ -457,21 +500,21 @@ def becdep2():
   [14.91167 , -91.36111],
   [14.97222, -89.53056]]
   depto = []
-  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  na = st.selectbox("Nombre del Estudiante: ", BecNames2,1)
   no=0
-  for w in BecNames:
+  for w in BecNames2:
     if w == na:
       break
     no+=1
   if na:
-# tx= "Estudiante:  "+ na+ "\n pertenece al departamento de: \n "+BecLugar[no] 
+# tx= "Estudiante:  "+ na+ "\n pertenece al departamento de: \n "+BecLugar2[no] 
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">pertenece al departamento de: </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecLugar[no]}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecLugar2[no]}</p>', unsafe_allow_html=True)
 
 
-  for B in BecLugar:
+  for B in BecLugar2:
     if B == 'Alta Verapaz':
       depto.append(dep[0])
     elif B == 'Baja Verapaz':
@@ -531,7 +574,7 @@ def becdep2():
   # for d in depto:
   #   lonlist.append(d[1])
   # data = pd.DataFrame(
-  #   BecNames,
+  #   BecNames2,
   #   latlist,
   #   lonlist)
   # st.write(data)
@@ -539,10 +582,10 @@ def becdep2():
   # st.plotly_chart(fig)
 
 def becedad2():
-  global rowsreportes, rowsresformularios
-  na = st.selectbox("Nombre del Estudiante: ", BecNames, 1)
+  global rowsreportes, rowsresformularios2
+  na = st.selectbox("Nombre del Estudiante: ", BecNames2, 1)
   no = 0
-  for w in BecNames:
+  for w in BecNames2:
       if w == na:
           break
       no += 1
@@ -555,21 +598,21 @@ def becedad2():
           f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Tiene: </p>',
           unsafe_allow_html=True)
       st.markdown(
-          f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad[no]} Años.</p>',
+          f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecEdad2[no]} Años.</p>',
           unsafe_allow_html=True)
 
   st.subheader("Gráfico de Edades (Barras)")
-  chart_data = pd.DataFrame({'Nombres': BecNames, 'Edades': BecEdad})
+  chart_data = pd.DataFrame({'Nombres': BecNames2, 'Edades': BecEdad2})
   st.bar_chart(chart_data.set_index('Nombres'))
 
   # st.subheader("VISTA 2 EDAD DE BECADOS (Sunburst)")
-  # acumconts = [str(int(carne[NamesAll.index(w)])) for w in BecNames]
+  # acumconts = [str(int(carne2[NamesAll2.index(w)])) for w in BecNames2]
   # acumcontstemp = acumconts
   # acumconts.pop()
   # data = dict(
   #     names=acumcontstemp,
   #     parent=acumconts.insert(0, ""),
-  #     value=BecEdad)
+  #     value=BecEdad2)
 
   # fig = px.sunburst(
   #     data,
@@ -580,17 +623,17 @@ def becedad2():
   # st.plotly_chart(fig)
 
 def becuni2():
-  global rowsreportes, rowsresformularios
+  global rowsreportes, rowsresformularios2
   hist_data = [x1, x2, x3]
   group_labels = ['Group 1', 'Group 2', 'Group 3']
   fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
   st.plotly_chart(fig, use_container_width=True)
 
 def becpro2():
-  global rowsreportes, rowsresformularios
-  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  global rowsreportes, rowsresformularios2
+  na = st.selectbox("Nombre del Estudiante: ", BecNames2,1)
   no=0
-  for w in BecNames:
+  for w in BecNames2:
     if w == na:
       break
     no+=1
@@ -598,10 +641,10 @@ def becpro2():
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo2[no]} </p>', unsafe_allow_html=True)
   ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
-  for b in BecNames:
-    ndata.append([b,BecTipo[BecNames.index(b)],Becdeptoreplic[BecNames.index(b)]])
+  for b in BecNames2:
+    ndata.append([b,BecTipo2[BecNames2.index(b)],Becdeptoreplic2[BecNames2.index(b)]])
   # st.write(ndata)
   fig =  ff.create_table(ndata)
   # Ajustar el diseño para evitar superposición
@@ -613,10 +656,10 @@ def becpro2():
   st.plotly_chart(fig)
 
 def bechoras2():
-  global rowsreportes, rowsresformularios
-  na = st.selectbox("Nombre del Estudiante: ", BecNames,1)
+  global rowsreportes, rowsresformularios2
+  na = st.selectbox("Nombre del Estudiante: ", BecNames2,1)
   no=0
-  for w in BecNames:
+  for w in BecNames2:
     if w == na:
       break
     no+=1
@@ -624,17 +667,17 @@ def bechoras2():
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene Acumuladas: </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras[no]} Horas.</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras2[no]} Horas.</p>', unsafe_allow_html=True)
 
   st.subheader("HORAS POR BECADOS")
   # wide_df = px.data.medals_wide()
   # st.write(px.data.medals_wide())
   # st.write(type(px.data.medals_wide()))
   acumconts=[]
-  for w in BecNames:
-    acumconts.append(str(int(carne[NamesAll.index(w)])))
-  wide_df = {tuple(BecNames),tuple(BecHoras)}
-  fig = px.bar(wide_df, x=acumconts, y=BecHoras,color=BecNames, title="HORAS REALIZADAS POR CADA BECADO (GRAFICO)")
+  for w in BecNames2:
+    acumconts.append(str(int(carne2[NamesAll2.index(w)])))
+  wide_df = {tuple(BecNames2),tuple(BecHoras2)}
+  fig = px.bar(wide_df, x=acumconts, y=BecHoras2,color=BecNames2, title="HORAS REALIZADAS POR CADA BECADO (GRAFICO)")
   st.plotly_chart(fig)
 
   st.subheader("VISTA 2")
@@ -643,7 +686,7 @@ def bechoras2():
   data = dict(
     names=acumcontstemp,
     parent=acumconts.insert(0,""),
-    value=BecHoras)
+    value=BecHoras2)
 
   fig = px.sunburst(
       data,
