@@ -218,8 +218,8 @@ def becdep():
     no+=1
   if na:
 # tx= "Estudiante:  "+ na+ "\n pertenece al departamento de: \n "+BecLugar[no] 
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">pertenece al departamento de: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecLugar[no]}</p>', unsafe_allow_html=True)
 
@@ -300,10 +300,10 @@ def becedad():
           break
       no += 1
   if na:
-      st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
-                  unsafe_allow_html=True)
-      st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
-                  unsafe_allow_html=True)
+      # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
+      #             unsafe_allow_html=True)
+      # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
+      #             unsafe_allow_html=True)
       st.markdown(
           f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Tiene: </p>',
           unsafe_allow_html=True)
@@ -348,8 +348,8 @@ def becpro():
       break
     no+=1
   if na:
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo[no]} </p>', unsafe_allow_html=True)
   ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
@@ -374,8 +374,8 @@ def bechoras():
       break
     no+=1
   if na:
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene Acumuladas: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras[no]} Horas.</p>', unsafe_allow_html=True)
 
@@ -508,8 +508,8 @@ def becdep2():
     no+=1
   if na:
 # tx= "Estudiante:  "+ na+ "\n pertenece al departamento de: \n "+BecLugar2[no] 
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">pertenece al departamento de: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecLugar2[no]}</p>', unsafe_allow_html=True)
 
@@ -590,10 +590,10 @@ def becedad2():
           break
       no += 1
   if na:
-      st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
-                  unsafe_allow_html=True)
-      st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
-                  unsafe_allow_html=True)
+      # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>',
+      #             unsafe_allow_html=True)
+      # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>',
+      #             unsafe_allow_html=True)
       st.markdown(
           f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Tiene: </p>',
           unsafe_allow_html=True)
@@ -638,8 +638,8 @@ def becpro2():
       break
     no+=1
   if na:
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Esta trabajando en los ejes de: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecTipo2[no]} </p>', unsafe_allow_html=True)
   ndata=[['BECADOS', 'AREA DE TRABAJO', 'DEPTO DONDE TRABAJA']]
@@ -664,8 +664,8 @@ def bechoras2():
       break
     no+=1
   if na:
-    st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">Estudiante:  </p>', unsafe_allow_html=True)
+    # st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{na}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#0;color:#05000A;font-size:24px;border-radius:2%;">tiene Acumuladas: </p>', unsafe_allow_html=True)
     st.markdown(f'<p style="background-color:#F0FF00;color:#05000A;font-size:24px;border-radius:2%;">{BecHoras2[no]} Horas.</p>', unsafe_allow_html=True)
 
@@ -696,6 +696,31 @@ def bechoras2():
   )
   st.plotly_chart(fig)
 
+def becbeneficiadas2():
+  global rowsreportes2, rowsresformularios2
+  # Crear un diccionario para almacenar el total de personas beneficiadas por departamento
+  total_personas_por_depto = {}
+
+  for i in range(len(BecNames2)):
+      becado_departamento = BecLugar2[i]
+      personas_capacitadas = BecCapacitadas2[i]
+
+      # Verificar si hay un valor numérico para personas capacitadas
+      if isinstance(personas_capacitadas, (int, float)):
+          # Sumar el número de personas capacitadas al total del departamento
+          if becado_departamento in total_personas_por_depto:
+              total_personas_por_depto[becado_departamento] += personas_capacitadas
+          else:
+              total_personas_por_depto[becado_departamento] = personas_capacitadas
+
+  # Mostrar el total de personas beneficiadas por departamento
+  st.subheader("Total de Personas Beneficiadas por Departamento")
+  for depto, total_personas in total_personas_por_depto.items():
+      st.write(f"{depto}: {int(total_personas)} personas beneficiadas")
+
+  # Crear un gráfico de barras para visualizar los totales por departamento
+  chart_data = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas'])
+  st.bar_chart(chart_data.set_index('Departamento'))
 #! █████████████████████ OPERACIONES █████████████████████
 
 def main():
@@ -736,7 +761,8 @@ def main():
       "Becados por Edades": becedad2,
       # "Becados por Unidad Academica": becuni,
       "Becados por Proyecto en el que trabaja": becpro2,
-      "Total de Horas por cada Becado": bechoras2
+      "Total de Horas por cada Becado": bechoras2,
+      "Personas Beneficiadas": becbeneficiadas2
     }
 
   
