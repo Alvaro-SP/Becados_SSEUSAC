@@ -715,14 +715,11 @@ def becbeneficiadas2():
 
   # Mostrar el total de personas beneficiadas por departamento
   st.subheader("Total de Personas Beneficiadas por Departamento")
-  for depto, total_personas in total_personas_por_depto.items():
-      st.write(f"{depto}: {int(total_personas)} personas beneficiadas")
+  # for depto, total_personas in total_personas_por_depto.items():
+  #     st.write(f"{depto}: {int(total_personas)} personas beneficiadas")
 
   # Crear un gráfico de barras para visualizar los totales por departamento
-  chart_data = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas'])
-  st.bar_chart(chart_data.set_index('Departamento'))
 
-  
   # Convertir el diccionario a un DataFrame
   chart_data = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas'])
 
@@ -731,6 +728,20 @@ def becbeneficiadas2():
 
   # Mostrar la gráfica en Streamlit
   st.plotly_chart(fig)
+
+    # Mostrar el total de personas beneficiadas por departamento en una tabla
+  st.subheader("Total de Personas Beneficiadas por Departamento")
+
+  # Crear una lista de tuplas para los datos de la tabla
+  tabla_datos = [("Departamento", "Total Personas Beneficiadas")]
+  for depto, total_personas in total_personas_por_depto.items():
+      tabla_datos.append((depto, int(total_personas)))
+
+  # Crear una cadena de texto en formato Markdown para la tabla
+  tabla_markdown = "\n".join([f"| {dato[0]} | {dato[1]} |" for dato in tabla_datos])
+
+  # Mostrar la tabla usando Markdown
+  st.markdown(tabla_markdown)
 #! █████████████████████ OPERACIONES █████████████████████
 
 def main():
