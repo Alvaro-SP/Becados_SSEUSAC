@@ -732,8 +732,11 @@ def becbeneficiadas2():
     # Mostrar el total de personas beneficiadas por departamento en una tabla
   st.subheader("Total de Personas Beneficiadas por Departamento")
 
-    # Crear un DataFrame con los datos
+  # Crear un DataFrame con los datos
   tabla_datos = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas Beneficiadas'])
+
+  # Formatear los números en el DataFrame
+  tabla_datos['Total Personas Beneficiadas'] = tabla_datos['Total Personas Beneficiadas'].map('{:.0f}'.format)
 
   # Mostrar la tabla en Streamlit
   st.table(tabla_datos)
