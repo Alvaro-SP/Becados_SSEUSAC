@@ -406,6 +406,51 @@ def bechoras():
   )
   st.plotly_chart(fig)
 
+def becbeneficiadas():
+  global rowsreportes, rowsresformularios
+  # Crear un diccionario para almacenar el total de personas beneficiadas por departamento
+  total_personas_por_depto = {}
+
+  for i in range(len(BecNames)):
+      becado_departamento = BecLugar[i]
+      personas_capacitadas = BecCapacitadas[i]
+
+      # Verificar si hay un valor numérico para personas capacitadas
+      if isinstance(personas_capacitadas, (int, float)):
+          # Sumar el número de personas capacitadas al total del departamento
+          if becado_departamento in total_personas_por_depto:
+              total_personas_por_depto[becado_departamento] += personas_capacitadas
+          else:
+              total_personas_por_depto[becado_departamento] = personas_capacitadas
+
+  # Mostrar el total de personas beneficiadas por departamento
+  st.subheader("Total de Personas Beneficiadas por Departamento")
+  # for depto, total_personas in total_personas_por_depto.items():
+  #     st.write(f"{depto}: {int(total_personas)} personas beneficiadas")
+
+  # Crear un gráfico de barras para visualizar los totales por departamento
+
+  # Convertir el diccionario a un DataFrame
+  chart_data = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas'])
+
+  # Crear una gráfica de barras con Plotly Express
+  fig = px.bar(chart_data, x='Departamento', y='Total Personas', title='Total de Personas Beneficiadas por Departamento')
+
+  # Mostrar la gráfica en Streamlit
+  st.plotly_chart(fig)
+
+    # Mostrar el total de personas beneficiadas por departamento en una tabla
+  st.subheader("Total de Personas Beneficiadas por Departamento")
+
+  # Crear un DataFrame con los datos
+  tabla_datos = pd.DataFrame(list(total_personas_por_depto.items()), columns=['Departamento', 'Total Personas Beneficiadas'])
+
+  # Formatear los números en el DataFrame
+  tabla_datos['Total Personas Beneficiadas'] = tabla_datos['Total Personas Beneficiadas'].map('{:.0f}'.format)
+
+  # Mostrar la tabla en Streamlit
+  st.table(tabla_datos)
+
 #! JALANDO LAS FILAS DE CADA HOJA 2023.
 reportes2 = st.secrets["reportes2"]
 rowsreportes2 = run_query(f'SELECT * FROM "{reportes2}"')
@@ -767,6 +812,7 @@ def main():
   if selected_year=="2022":
     st.title('Becados 2022')
     page_names_to_funcs = {
+      "Personas Beneficiadas": becbeneficiadas,
       "Becados por Departamento": becdep,
       "Becados por Edades": becedad,
       # "Becados por Unidad Academica": becuni,
@@ -776,12 +822,12 @@ def main():
   elif selected_year=="2023":
     st.title('Becados 2023')
     page_names_to_funcs = {
+      "Personas Beneficiadas": becbeneficiadas2,
       "Becados por Departamento": becdep2,
       "Becados por Edades": becedad2,
       # "Becados por Unidad Academica": becuni,
       "Becados por Proyecto en el que trabaja": becpro2,
-      "Total de Horas por cada Becado": bechoras2,
-      "Personas Beneficiadas": becbeneficiadas2
+      "Total de Horas por cada Becado": bechoras2
     }
 
   
